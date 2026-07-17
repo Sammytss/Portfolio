@@ -1,0 +1,1371 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #02287a 0%, #2f7a56 50%, #e1452a 100%);
+    color: #2d3748;
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.laranja {
+    color: #e1452a;
+}
+
+.azul {
+    color: #02287a;
+}
+
+/* Cabeçalho institucional */
+.institutional-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-space {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.logo-space img {
+    width: 150px;
+}
+
+.institution-info h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+}
+
+.institution-info p {
+    font-size: 0.9rem;
+    color: #718096;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background: rgba(74, 85, 104, 0.1);
+    border-radius: 8px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #e1452a, #062f8d);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-size: 20px;
+}
+
+/* Conteúdo principal */
+.main-content {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.form-container {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.form-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.form-description {
+    color: #718096;
+    font-size: 1rem;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-icon {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+.required {
+    color: #e1452a;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #f7fafc;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-right: 3rem;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #02287a;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(2, 40, 122, 0.1);
+    transform: translateY(-1px);
+}
+
+select:hover {
+    border-color: #cbd5e0;
+}
+
+input:focus {
+    outline: none;
+    border-color: #02287a;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(2, 40, 122, 0.1);
+    transform: translateY(-1px);
+}
+
+input[type="file"] {
+    padding: 1rem;
+    background: #f7fafc;
+    border: 2px dashed #cbd5e0;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: #02287a;
+    background: rgba(2, 40, 122, 0.05);
+}
+
+.submit-section {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+#submitBtn {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    color: white;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(2, 40, 122, 0.3);
+    min-width: 250px;
+}
+
+#submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(2, 40, 122, 0.4);
+}
+
+#submitBtn:active {
+    transform: translateY(0);
+}
+
+/* Estilos do ícone de ajuda */
+.help-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.help-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(2, 40, 122, 0.3);
+}
+
+/* Estilos do card de ajuda */
+.help-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.help-card-content {
+    background: white;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.help-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 2px solid #e2e8f0;
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    color: white;
+}
+
+.help-card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.help-card-body {
+    padding: 2rem;
+}
+
+.help-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.help-card-content {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+.help-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.help-card-header h3 {
+    margin: 0;
+    color: #e2e8f0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.help-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #d8dadd;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.help-close-btn:hover {
+    background: #f7fafc;
+    color: #2d3748;
+}
+
+.help-card-body {
+    padding: 2rem;
+}
+
+.help-card-body p {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.help-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.help-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f7fafc;
+}
+
+.help-option:hover {
+    border-color: #02287a;
+    background: rgba(2, 40, 122, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(2, 40, 122, 0.15);
+}
+
+.help-option-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.help-option-content h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2d3748;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.help-option-content p {
+    margin: 0;
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.help-section {
+    margin-bottom: 1.5rem;
+}
+
+.help-section:last-child {
+    margin-bottom: 0;
+}
+
+.help-section h4 {
+    color: #2d3748;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.help-section p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+}
+
+.help-section p:last-child {
+    margin-bottom: 0;
+}
+
+.help-section p strong {
+    color: #2d3748;
+}
+
+/* ========================================
+           ESTILOS DO MODAL DE VÍDEO
+======================================== */
+
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 3000;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.video-modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    animation: slideIn 0.3s ease-out;
+}
+
+.video-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.video-modal-header h3 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.video-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #718096;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.video-close-btn:hover {
+    background: #f7fafc;
+    color: #2d3748;
+}
+
+.video-container {
+    padding: 2rem;
+}
+
+.video-placeholder {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f7fafc, #edf2f7);
+    border-radius: 12px;
+    border: 2px dashed #cbd5e0;
+}
+
+.video-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.video-placeholder h4 {
+    color: #2d3748;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.video-placeholder p {
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.video-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #718096;
+}
+
+.video-play-btn {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(2, 40, 122, 0.3);
+}
+
+.video-play-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(2, 40, 122, 0.4);
+}
+
+#resultArea {
+    margin-top: 2rem;
+    padding: 2.5rem;
+    border-radius: 8px;
+}
+
+#resultArea.hidden {
+    display: none;
+}
+
+.loader {
+    text-align: center;
+    font-weight: 500;
+    color: #1a73e8;
+}
+
+.loader::after {
+    content: ' .';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+
+@keyframes dots {
+
+    0%,
+    20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    40% {
+        color: #1a73e8;
+        text-shadow: .25em 0 0 rgba(0, 0, 0, 0), .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    60% {
+        text-shadow: .25em 0 0 #1a73e8, .5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    80%,
+    100% {
+        text-shadow: .25em 0 0 #1a73e8, .5em 0 0 #1a73e8;
+    }
+}
+
+/* Indicadores de progresso fixos no cabeçalho */
+.header-progress {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-progress.visible {
+    display: flex;
+}
+
+.header-progress .progress-step {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.header-progress .progress-step.active {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress-step {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e2e8f0;
+}
+
+.progress-step.active {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+}
+
+.footer-info {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.criador {
+    text-decoration: none;
+    color: #2d3748;
+    ;
+}
+
+/* Estilos para seletor de dias da semana */
+.weekdays-selector {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.weekdays-selector input[type="checkbox"] {
+    display: none;
+}
+
+.weekdays-selector label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 40px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f7fafc;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-bottom: 0;
+    margin: 0%;
+}
+
+.weekdays-selector label:hover {
+    border-color: #02287a;
+    background: rgba(2, 40, 122, 0.05);
+}
+
+.weekdays-selector input[type="checkbox"]:checked+label {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    border-color: #02287a;
+    color: white;
+}
+
+/* ========================================
+   ESTILOS DO GUIA INTERATIVO
+   ======================================== */
+
+/* Controlar o estado do guia */
+body.guide-is-active {
+    overflow: hidden;
+    /* Previne o scroll da página enquanto o guia está ativo */
+}
+
+/* Container principal do guia - overlay que cobre toda a tela */
+.interactive-guide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    background: rgba(17, 24, 39, 0.8);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal de boas-vindas e Tooltip */
+.guide-welcome,
+.guide-tooltip {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px 3px rgba(0, 0, 0, .15), 0 1px 3px rgba(0, 0, 0, .3);
+    z-index: 2001;
+}
+
+.guide-welcome {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 450px;
+    width: 90%;
+    text-align: center;
+}
+
+.guide-tooltip {
+    position: absolute;
+    max-width: 500px;
+    will-change: transform, top, left;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =======================================================
+   ✨ POSICIONAMENTO RESPONSIVO DO TOOLTIP ✨
+   ======================================================= */
+
+.guide-tooltip {
+    position: absolute;
+}
+
+/* Regra de posicionamento para forçar o tooltip à DIREITA (ecrãs largos) */
+.guide-tooltip.right {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    margin-left: 2rem;
+}
+
+/* ✨ REGRA para posicionar o tooltip EM BAIXO (ecrãs estreitos) ✨ */
+.guide-tooltip.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 2rem;
+}
+
+/* Base para a seta */
+.guide-tooltip::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+}
+
+/* Desenho da seta para a posição DIREITA */
+.guide-tooltip.right::before {
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px 10px 10px 0;
+    border-right-color: white;
+}
+
+/* ✨ REGRA para a seta na posição EM BAIXO ✨ */
+.guide-tooltip.bottom::before {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 10px 10px 10px;
+    border-bottom-color: white;
+}
+
+/* Títulos */
+.guide-welcome h2,
+.guide-header {
+    color: #2d3748;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.guide-title {
+    font-size: 1.1rem;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.guide-step-number {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Texto descritivo */
+.guide-welcome p,
+.guide-description {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* Botões*/
+.guide-actions,
+.guide-welcome-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.guide-welcome-actions {
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.guide-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+}
+
+.guide-btn-primary {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    color: white;
+}
+
+.guide-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(2, 40, 122, 0.3);
+}
+
+.guide-btn-secondary {
+    background: #e2e8f0;
+    color: #4a5568;
+    border-color: transparent;
+}
+
+.guide-btn-secondary:hover {
+    background: #cbd5e0;
+}
+
+/* Barra de progresso */
+.guide-progress {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.guide-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+}
+
+.guide-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    transition: width 0.3s ease;
+}
+
+/* Efeito de Holofote */
+.field-highlight {
+    position: relative;
+    z-index: 2001;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 0 0 4px #02287a;
+    /* ✨ AZUL ORIGINAL ✨ */
+    transition: box-shadow 0.3s ease-out;
+    margin: -12px;
+    padding: 12px;
+}
+
+/* Checkbox */
+.guide-welcome-checkbox {
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #4a5568;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e0;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover .checkmark {
+    border-color: #02287a;
+}
+
+.checkbox-container input[type="checkbox"]:checked+.checkmark {
+    background: linear-gradient(135deg, #02287a, #2f7a56);
+    border-color: #02287a;
+}
+
+.checkbox-container input[type="checkbox"]:checked+.checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Container dos botões do modal de boas-vindas */
+.guide-welcome-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* =========================================
+   TOOLTIPS AUTOMÁTICOS (AJUDA NOS CAMPOS)
+   ========================================= */
+
+/* Ajuste no Label para alinhar o texto com o ícone */
+.form-group label, 
+.form-group-row label {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Texto apenas para leitores de tela (acessibilidade) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* O ícone de interrogação */
+.tooltip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: #e0e0e0;
+    color: #555;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: help;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.tooltip-icon:hover {
+    background-color: #005cbb; /* Azul Institucional */
+    color: white;
+    transform: scale(1.1);
+}
+
+/* O Balão de Texto (Tooltip) */
+.tooltip-icon::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 130%; /* Fica acima do ícone */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    
+    width: max-content;
+    max-width: 280px; /* Largura máxima do texto */
+    padding: 8px 12px;
+    
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.4;
+    white-space: normal;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    
+    /* Estado inicial: invisível */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none; 
+}
+
+/* A setinha embaixo do balão */
+.tooltip-icon::before {
+    content: "";
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2c3e50 transparent transparent transparent;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+}
+
+/* Efeito ao passar o mouse */
+.tooltip-icon:hover::after,
+.tooltip-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Ajuste para telas pequenas (Mobile) */
+@media (max-width: 768px) {
+    .tooltip-icon::after {
+        left: -100px; /* Desloca para a esquerda para não sair da tela */
+        transform: translateX(0);
+    }
+    .tooltip-icon:hover::after {
+        transform: translateX(0);
+    }
+}
+
+/* =========================================
+   ÁREA DE ATUALIZAÇÕES (MODAL BOAS-VINDAS)
+   ========================================= */
+
+.updates-container {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.updates-header {
+    font-size: 1rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Lista com Scroll suave se houver muitos itens */
+.updates-list {
+    max-height: 180px; /* Limita a altura para não quebrar o modal */
+    overflow-y: auto;
+    padding-right: 5px; /* Espaço para a scrollbar */
+}
+
+/* Estilização da Scrollbar fina */
+.updates-list::-webkit-scrollbar {
+    width: 4px;
+}
+.updates-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.updates-list::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 4px;
+}
+
+.update-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.update-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.update-item:first-child {
+    padding-top: 0;
+}
+
+.update-icon-box {
+    background: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex-shrink: 0;
+}
+
+.update-text {
+    flex: 1;
+}
+
+.update-text strong {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+}
+
+.update-text p {
+    font-size: 0.8rem;
+    color: var(--text-medium);
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Badges (Etiquetas) */
+.badge-new, .badge-update {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-new {
+    background-color: var(--primary-orange); /* Laranja para destaque */
+    color: rgb(219, 106, 14);
+}
+
+.badge-update {
+    background-color: var(--primary-green); /* Verde para melhorias */
+    color: rgb(0, 121, 40);
+}
+
+/* Ajuste Responsivo para o Modal não estourar */
+@media (max-width: 768px) {
+    .updates-list {
+        max-height: 140px;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-content {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+
+    .form-container {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .form-group-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco de Talentos 22º BI</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .container img { width: 150px; }
+        .talento-row:hover { box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5); cursor: pointer; }
+        .estilomodal .modal-dialog { max-width: 900px; }
+        .demo-note {
+            background: #fff3cd; color: #664d03; border-bottom: 1px solid #ffe69c;
+            font-size: .82rem; text-align: center; padding: .5rem 1rem;
+        }
+        #talentoModalBody th { width: 210px; background: #f8f9fa; }
+        @media (max-width: 575px) {
+            .filtro-row { flex-direction: column; gap: .6rem; }
+            .filtro-row > * { width: 100%; }
+            .navbar-brand img { width: 110px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-note">
+        <i class="fas fa-circle-info"></i> Versão de demonstração (somente front-end). O talento cadastrado é o currículo do próprio autor, conforme o banco de dados real.
+    </div>
+
+    <!-- Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="listar.html"><img src="logo.png" alt="Banco de Talentos 22º BI"></a>
+            <div class="navbar-nav mr-auto">
+                <a class="nav-link active" href="listar.html"><i class="fas fa-list-ul"></i> Talentos</a>
+                <a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i> Painel de Controle</a>
+            </div>
+            <a href="index.html" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Sair</a>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>BANCO DE TALENTOS <b>CCAP</b></h2>
+        <p><b>Usuário:</b> sgteccap &nbsp; <b>Perfil:</b> cadastrador &nbsp; <b>CIA:</b> CCAP</p>
+
+        <!-- Filtro -->
+        <form onsubmit="return false;" class="mb-3">
+            <div class="d-flex filtro-row" style="gap:.6rem; flex-wrap:wrap;">
+                <input type="text" id="nome_pesquisa" class="form-control" style="max-width:280px"
+                    placeholder="Pesquisar Nome, Cursos, habilidades, idiomas...">
+                <select id="area_pesquisa" class="form-control" style="max-width:240px">
+                    <option value="">Selecione Competência</option>
+                    <option>Informática TI</option>
+                    <option>Design e Edições</option>
+                    <option>Administração</option>
+                    <option>Motorista</option>
+                </select>
+                <div>
+                    <button type="button" class="btn btn-success" onclick="filtrar()"><i class="fas fa-filter"></i> Filtrar</button>
+                    <button type="button" class="btn btn-danger" onclick="limpar()"><i class="fas fa-times"></i> Limpar</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selecionarTudo"> Selecionar Tudo</th>
+                        <th>Nome</th>
+                        <th>Data de Praça</th>
+                        <th>Competência</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaTalentos"></tbody>
+            </table>
+        </div>
+
+        <div class="mb-4">
+            <button type="button" class="btn btn-success" onclick="exportarXLSX()">
+                <i class="fas fa-download"></i> Exportar
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-center text-muted pb-4" style="font-size:14px;">
+        &copy; 2026 Banco de Talentos SecInfor 22° BI — Desenvolvido por
+        <a href="https://www.linkedin.com/in/samuel-teles-dos-santos-662003237/" target="_blank" rel="noopener"
+           style="color:#0a66c2; text-decoration:none; font-weight:500;">
+            <i class="fa-brands fa-linkedin"></i> SD Teles</a>
+    </footer>
+
+    <!-- Modal de detalhes -->
+    <div class="modal fade estilomodal" id="talentoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalhes do Talento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span>&times;</span></button>
+                </div>
+                <div class="modal-body" id="talentoModalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/xlsx.full.min.js"></script>
+    <script>
+        // Talento conforme o banco de dados real (banco_talento_22_BImec.sql, id 30),
+        // complementado com o currículo do autor.
+        const talentos = [{
+            nome: "Samuel Teles dos Santos",
+            data_praca: "2018",
+            competencia: "Informática TI",
+            status: "Ativo",
+            detalhes: {
+                "Data de Nascimento": "00/00/1999",
+                "Endereço": "Av. 0, Qd. 000, Lt. 00, Bairro — Palmas-TO",
+                "Número de Telefone": "(63) 90000-0000",
+                "Email": "samuel.tssbr@gmail.com",
+                "Companhia": "CCAP",
+                "Data de Praça": "2018",
+                "Competências": "Informática TI — Redes, Cloud, Banco de dados, PCs e Notebooks, IOT, Cibersegurança, Desenvolvimento Web, Sistemas e Aplicativos",
+                "Formação Acadêmica": "Pós-graduação - Incompleto",
+                "CNH": "AB",
+                "Experiências": "6 anos na seção de informática do 22° BI",
+                "Habilidades": "Analista de sistemas, desenvolvedor web, PHP, JavaScript, HTML, CSS, infraestrutura de computadores, redes e notebooks, cabeamento estruturado, configuração e gerenciamento de switches e MikroTik, manutenção e gerenciamento de servidores, banco de dados, sistema de chamados, monitoramento de rede (Zabbix, Grafana), gestão em TI, cibersegurança, instalação e gerenciamento de sistemas em nuvem, edição em Photoshop e CorelDraw, fotografia.",
+                "Cursos": "Análise e Desenvolvimento de Sistemas, Tecnologias para Aplicações Web, Técnico em Informática, IT Essentials (Cisco), Oracle Cloud Infrastructure, Linux Administrador, Montagem e manutenção de computadores/redes/notebooks/celulares, Photoshop, Operador de Computador.",
+                "Idiomas": "Português (nativo)",
+                "Projetos": "Banco de Talentos 22° BI, Saúde da Família Militar 22° BI, Plano Generatos."
+            }
+        }];
+
+        const tbody = document.getElementById('tabelaTalentos');
+        function statusClass(s) {
+            return s === 'Ativo' ? 'table-success' : (s === 'Último ano' ? 'table-warning' : 'table-danger');
+        }
+        function render(lista) {
+            if (!lista.length) {
+                tbody.innerHTML = `<tr><td colspan="6">Nenhum talento encontrado com os filtros aplicados.</td></tr>`;
+                return;
+            }
+            tbody.innerHTML = lista.map((t, i) => `
+                <tr class="talento-row" data-index="${i}">
+                    <td><input type="checkbox" class="checkbox-talento" data-index="${i}"></td>
+                    <td>${t.nome}</td>
+                    <td>${t.data_praca}</td>
+                    <td>${t.competencia}</td>
+                    <td class="${statusClass(t.status)}">${t.status}</td>
+                    <td></td>
+                </tr>`).join('');
+            document.querySelectorAll('.talento-row').forEach(row => {
+                row.addEventListener('click', function (e) {
+                    if (e.target.classList.contains('checkbox-talento')) return;
+                    abrirDetalhes(Number(this.dataset.index));
+                });
+            });
+        }
+        function abrirDetalhes(i) {
+            const d = talentos[i].detalhes;
+            let html = '<div class="table-responsive"><table class="table table-bordered mb-0"><tbody>';
+            html += `<tr><th>Nome</th><td>${talentos[i].nome}</td></tr>`;
+            for (const k in d) html += `<tr><th>${k}</th><td>${d[k]}</td></tr>`;
+            html += '</tbody></table></div>';
+            document.getElementById('talentoModalBody').innerHTML = html;
+            $('#talentoModal').modal('show');
+        }
+        function filtrar() {
+            const termo = (document.getElementById('nome_pesquisa').value || '').toLowerCase();
+            const area = document.getElementById('area_pesquisa').value.toLowerCase();
+            render(talentos.filter(t => {
+                const blob = (t.nome + ' ' + t.competencia + ' ' + Object.values(t.detalhes).join(' ')).toLowerCase();
+                return blob.includes(termo) && (!area || blob.includes(area));
+            }));
+        }
+        function limpar() {
+            document.getElementById('nome_pesquisa').value = '';
+            document.getElementById('area_pesquisa').value = '';
+            render(talentos);
+        }
+        document.getElementById('selecionarTudo').addEventListener('click', function () {
+            document.querySelectorAll('.checkbox-talento').forEach(c => c.checked = this.checked);
+        });
+        function exportarXLSX() {
+            const sel = document.querySelectorAll('.checkbox-talento:checked');
+            if (!sel.length) { alert('Nenhum talento selecionado.'); return; }
+            const linhas = Array.from(sel).map(c => {
+                const t = talentos[Number(c.dataset.index)];
+                return { Nome: t.nome, Competências: t.competencia, 'Data de Praça': t.data_praca,
+                    Email: t.detalhes.Email, Telefone: t.detalhes['Número de Telefone'],
+                    'Formação': t.detalhes['Formação Acadêmica'], Habilidades: t.detalhes.Habilidades };
+            });
+            const ws = XLSX.utils.json_to_sheet(linhas);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Talentos');
+            XLSX.writeFile(wb, 'talentos.xlsx');
+        }
+        render(talentos);
+    </script>
+</body>
+
+</html>

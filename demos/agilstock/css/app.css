@@ -1,0 +1,153 @@
+:root {
+    --agil-dark: #281708;
+    --agil-dark-2: #1e1105;
+    --agil-orange: #db8a3f;
+}
+
+* { box-sizing: border-box; }
+
+html { overflow-x: hidden; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f6f9;
+    color: #212529;
+    overflow-x: hidden;
+}
+
+.table-responsive { width: 100%; overflow-x: auto; }
+
+.demo-note {
+    background: #fff3cd;
+    color: #664d03;
+    border-bottom: 1px solid #ffe69c;
+    font-size: .82rem;
+    text-align: center;
+    padding: .5rem 1rem;
+}
+
+/* ===== Sidebar (identidade AgilStock) ===== */
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--agil-dark);
+    padding-top: 24px;
+    overflow-x: hidden;
+    z-index: 10;
+}
+
+.sidebar .brand {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .brand img { width: 180px; max-width: 80%; }
+
+.opmenu {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 56px;
+    padding: 0 22px;
+    color: var(--agil-orange);
+    text-decoration: none;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.opmenu i { width: 26px; text-align: center; font-size: 1.2rem; }
+.opmenu .txt { font-size: 1rem; letter-spacing: .02em; }
+
+.opmenu:hover, .opmenu.active {
+    background: var(--agil-dark-2);
+    padding-left: 27px;
+    color: #f0a860;
+}
+
+/* ===== Conteúdo ===== */
+.content {
+    margin-left: 250px;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid #dee2e6;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 { font-size: 1.4rem; margin: 0; }
+.topbar .user { color: #6c757d; font-size: .9rem; }
+
+.page { padding: 24px; }
+
+/* ===== Small boxes (estilo AdminLTE) ===== */
+.small-box {
+    border-radius: 8px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,.12);
+    margin-bottom: 22px;
+}
+.small-box .inner { padding: 16px 18px; }
+.small-box .inner h3 { font-size: 2.2rem; margin: 0; font-weight: 700; }
+.small-box .inner p { margin: 4px 0 0; font-size: .95rem; }
+.small-box .icon {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 3.4rem;
+    opacity: .25;
+}
+.small-box .footer {
+    display: block;
+    background: rgba(0,0,0,.1);
+    color: rgba(255,255,255,.9);
+    padding: 6px 18px;
+    font-size: .82rem;
+    text-decoration: none;
+}
+.bg-info    { background: #17a2b8; }
+.bg-success { background: #28a745; }
+.bg-warning { background: #ffc107; color: #1f2d3d; }
+.bg-danger  { background: #dc3545; }
+.bg-warning .icon { opacity: .3; }
+
+/* ===== Cards ===== */
+.card {
+    background: #fff;
+    border: 1px solid #e3e6ea;
+    border-radius: 8px;
+    margin-bottom: 22px;
+}
+.card-header {
+    padding: 12px 18px;
+    border-bottom: 1px solid #e3e6ea;
+    font-weight: 600;
+}
+.card-header .fa-chart-line, .card-header i { color: var(--agil-orange); margin-right: 8px; }
+.card-body { padding: 18px; }
+
+.table thead th { border-top: none; }
+.badge-status { padding: .35em .6em; border-radius: 6px; font-size: .78rem; font-weight: 600; }
+.st-ok   { background: #d4edda; color: #155724; }
+.st-low  { background: #fff3cd; color: #856404; }
+.st-out  { background: #f8d7da; color: #721c24; }
+
+@media (max-width: 768px) {
+    .sidebar { width: 64px; padding-top: 14px; }
+    .sidebar .brand, .opmenu .txt { display: none; }
+    .opmenu { justify-content: center; padding: 0; }
+    .content { margin-left: 64px; }
+    .small-box .inner h3 { font-size: 1.7rem; }
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ágil Stock — Login</title>
+    <link rel="icon" type="image/png" href="img/logo-caixa.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        :root { --agil-dark: #281708; --agil-orange: #db8a3f; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: "Segoe UI", Roboto, sans-serif; background: #e9ecef; }
+
+        .demo-note {
+            background: #fff3cd; color: #664d03; border-bottom: 1px solid #ffe69c;
+            font-size: .82rem; text-align: center; padding: .5rem 1rem;
+        }
+
+        .topnav {
+            background: var(--agil-dark);
+            display: flex; align-items: center; flex-wrap: wrap; gap: .5rem 1.5rem;
+            padding: .6rem 1.2rem; color: var(--agil-orange);
+        }
+        .topnav .brand { display: flex; align-items: center; gap: .5rem; font-weight: 700; color: var(--agil-orange); text-decoration: none; }
+        .topnav .brand img { width: 42px; }
+        .topnav .links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+        .topnav a.nav-item { color: var(--agil-orange); text-decoration: none; font-size: .9rem; transition: color .2s; }
+        .topnav a.nav-item:hover { color: #fff; }
+        .topnav .tagline { margin-left: auto; color: #cbb79c; font-size: .82rem; }
+
+        .login-wrap {
+            min-height: calc(100vh - 120px);
+            display: flex; align-items: center; justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .login-card {
+            width: min(1000px, 100%);
+            min-height: 460px;
+            background: url("img/login-bg.jpg") center / cover no-repeat;
+            border-radius: 10px; overflow: hidden;
+            display: flex; justify-content: flex-end;
+            box-shadow: 0 10px 40px rgba(0,0,0,.3);
+        }
+        .login-inner {
+            width: 420px; max-width: 100%;
+            background: rgba(40, 23, 8, 0.92);
+            color: var(--agil-orange);
+            display: flex; flex-direction: column;
+        }
+        .login-inner .logo-head { padding: 1.5rem; text-align: center; }
+        .login-inner .logo-head img { width: 230px; max-width: 80%; }
+        .login-inner form { padding: 0 2rem 2rem; }
+        .login-inner label { display: block; margin-bottom: .3rem; font-weight: 500; }
+        .login-inner .form-control { margin-bottom: 1rem; }
+        .btn-entrar {
+            width: 100%; background: var(--agil-orange); color: var(--agil-dark);
+            font-weight: 700; padding: .7rem; border: none; border-radius: 5px;
+            transition: .2s; cursor: pointer;
+        }
+        .btn-entrar:hover { opacity: .85; color: #fff; }
+        .esqueci { display: inline-block; margin-top: .8rem; color: var(--agil-orange); text-decoration: none; font-size: .85rem; }
+        .esqueci:hover { color: #fff; }
+        footer { text-align: center; color: var(--agil-dark); padding: 1rem; font-size: .85rem; }
+
+        @media (max-width: 768px) {
+            .login-card { background: var(--agil-dark); justify-content: center; }
+            .topnav .tagline { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo-note">
+        <i class="fas fa-circle-info"></i> Versão de demonstração — credenciais fictícias já preenchidas. Clique em <b>Entrar</b>.
+    </div>
+
+    <nav class="topnav">
+        <a class="brand" href="index.html"><img src="img/logo-caixa.png" alt="Ágil Stock"> ÁGIL STOCK</a>
+        <div class="links">
+            <a class="nav-item" href="#"><i class="fas fa-user-plus"></i> Solicitar Acesso</a>
+            <a class="nav-item" href="#"><i class="fas fa-gear"></i> Suporte Técnico</a>
+            <a class="nav-item" href="#"><i class="fas fa-headset"></i> SAC</a>
+        </div>
+        <span class="tagline">Controle de estoque ágil para o seu negócio</span>
+    </nav>
+
+    <div class="login-wrap">
+        <div class="login-card">
+            <div class="login-inner">
+                <div class="logo-head"><img src="img/logo-laranja.png" alt="Logotipo Ágil Stock"></div>
+                <form onsubmit="entrar(event)">
+                    <label for="nome_usuario">Nome de Usuário:</label>
+                    <input type="text" class="form-control" id="nome_usuario" value="admin" required>
+                    <label for="senha">Senha:</label>
+                    <input type="password" class="form-control" id="senha" value="agil2024" required>
+                    <button type="submit" class="btn-entrar"><i class="fas fa-right-to-bracket"></i> Entrar</button>
+                    <a href="#" class="esqueci" onclick="return false;">Esqueci minha senha</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>&copy; 2026 Ágil Stock. Todos os direitos reservados.</footer>
+
+    <script>
+        function entrar(e) { e.preventDefault(); window.location.href = 'dashboard.html'; }
+    </script>
+</body>
+
+</html>

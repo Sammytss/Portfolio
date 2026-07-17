@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilStock — Painel Geral</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="demo-note">
+        <i class="fas fa-circle-info"></i> Versão de demonstração (somente front-end, com dados de exemplo).
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <a class="brand" href="dashboard.html"><img src="img/logo-laranja.png" alt="AgilStock"></a>
+        <a class="opmenu active" href="dashboard.html"><i class="fas fa-chart-pie"></i><span class="txt">PAINEL GERAL</span></a>
+        <a class="opmenu" href="estoque.html"><i class="fas fa-boxes-stacked"></i><span class="txt">ESTOQUE</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-truck-field"></i><span class="txt">FORNECEDOR</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-user-plus"></i><span class="txt">NOVOS USUÁRIOS</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-dolly"></i><span class="txt">REGISTRO DE SAÍDA</span></a>
+        <a class="opmenu" href="index.html"><i class="fas fa-right-from-bracket"></i><span class="txt">SAIR</span></a>
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="content">
+        <div class="topbar">
+            <h1>Painel Geral</h1>
+            <span class="user"><i class="fas fa-user-circle"></i> admin · AgilStock</span>
+        </div>
+
+        <div class="page">
+            <!-- Stat boxes -->
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner"><h3>128</h3><p>Produtos cadastrados</p></div>
+                        <div class="icon"><i class="fas fa-box"></i></div>
+                        <a href="estoque.html" class="footer">Ver estoque <i class="fas fa-circle-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner"><h3>53<sup style="font-size:20px">%</sup></h3><p>Capacidade de estoque</p></div>
+                        <div class="icon"><i class="fas fa-warehouse"></i></div>
+                        <a href="#" class="footer">Mais informações <i class="fas fa-circle-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner"><h3>R$ 44k</h3><p>Valor em estoque</p></div>
+                        <div class="icon"><i class="fas fa-sack-dollar"></i></div>
+                        <a href="#" class="footer">Mais informações <i class="fas fa-circle-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner"><h3>5</h3><p>Itens em falta</p></div>
+                        <div class="icon"><i class="fas fa-triangle-exclamation"></i></div>
+                        <a href="estoque.html" class="footer">Ver itens <i class="fas fa-circle-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Gráfico -->
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-chart-line"></i> Movimentação de estoque (2025)</div>
+                        <div class="card-body">
+                            <canvas id="movChart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <!-- Categorias -->
+                <div class="col-lg-5">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-layer-group"></i> Estoque por categoria</div>
+                        <div class="card-body"><canvas id="catChart" height="180"></canvas></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saídas recentes -->
+            <div class="card">
+                <div class="card-header"><i class="fas fa-dolly"></i> Saídas recentes</div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr><th>Produto</th><th>Categoria</th><th>Qtd.</th><th>Responsável</th><th>Data</th></tr>
+                            </thead>
+                            <tbody id="saidasBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const orange = '#db8a3f';
+        new Chart(document.getElementById('movChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul'],
+                datasets: [
+                    { label: 'Entradas', data: [120, 90, 140, 110, 160, 130, 175], borderColor: orange, backgroundColor: 'rgba(219,138,63,.15)', fill: true, tension: .35 },
+                    { label: 'Saídas', data: [80, 100, 95, 130, 120, 145, 138], borderColor: '#495057', backgroundColor: 'rgba(73,80,87,.1)', fill: true, tension: .35 }
+                ]
+            },
+            options: { plugins: { legend: { position: 'bottom' } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        new Chart(document.getElementById('catChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Matéria-prima', 'Produtos acabados', 'Embalagens', 'Insumos'],
+                datasets: [{ data: [42, 30, 16, 12], backgroundColor: [orange, '#28a745', '#17a2b8', '#ffc107'] }]
+            },
+            options: { plugins: { legend: { position: 'bottom' } } }
+        });
+
+        const saidas = [
+            ['Caixa Papelão 40x30', 'Embalagens', 25, 'Carlos M.', '14/07/2025'],
+            ['Resina PET (kg)', 'Matéria-prima', 120, 'Ana P.', '13/07/2025'],
+            ['Rótulo Adesivo', 'Insumos', 500, 'João S.', '12/07/2025'],
+            ['Garrafa 650ml', 'Produtos acabados', 340, 'Marina T.', '11/07/2025'],
+            ['Tampa Rosqueável', 'Insumos', 800, 'Carlos M.', '10/07/2025']
+        ];
+        document.getElementById('saidasBody').innerHTML = saidas.map(s =>
+            `<tr><td>${s[0]}</td><td>${s[1]}</td><td>${s[2]}</td><td>${s[3]}</td><td>${s[4]}</td></tr>`).join('');
+    </script>
+</body>
+
+</html>

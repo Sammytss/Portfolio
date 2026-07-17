@@ -1,0 +1,406 @@
+<!-- Email vertex: planogenerator@planogenerator.iam.gserviceaccount.com-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/Images/LogoTipo_PlanoGenerator.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!-- Cabeçalho institucional -->
+    <div class="institutional-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-space">
+                    <a href="#">
+                        <img src="assets/Images/Logo_P_G.png" alt="Logo Plano Generator">
+                    </a>
+                </div>
+                <div class="institution-info">
+                    <h1>
+                        <azul class="azul">Plano</azul>
+                        <laranja class="laranja">Generator</laranja>
+                    </h1>
+                    <p>Planejamento Docente Inteligente</p>
+                </div>
+            </div>
+
+            <!-- Indicadores de progresso fixos no cabeçalho -->
+            <div id="headerProgress" class="header-progress">
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+
+            <div class="header-actions">
+                <div class="user-info">
+                    <div class="user-avatar">in</div>
+                    <a class='criador' href="https://linkedin.com/in/samuel-teles-dos-santos-662003237"> <span>Samuel
+                            Teles</span></a>
+                </div>
+                <div class="help-icon">
+                    <span>?</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================
+                    GUIA INTERATIVO
+         ======================================== -->
+
+    <!-- Container principal do guia interativo (overlay de fundo) -->
+    <div id="interactiveGuide" class="interactive-guide hidden">
+
+        <!-- Modal de boas-vindas - primeira tela que o usuário vê -->
+        <div id="guideWelcome" class="guide-welcome">
+            <h2>🎯 Bem-vindo ao Plano Generator!</h2>
+            <p>Vamos te guiar passo a passo pelo preenchimento do formulário para criar seu planejamento com facilidade.
+            </p>
+
+            <div class="updates-container">
+                <h3 class="updates-header">✨ Novidades da Versão 2.0.1</h3>
+                <div class="updates-list">
+
+                    <div class="update-item">
+                        <div class="update-icon-box">🏫</div>
+                        <div class="update-text">
+                            <strong>Seleção de Unidade Escolar</strong>
+                            <p>Selecione primeiro o <strong>Estado</strong>, depois o <strong>Município</strong> e por fim a <strong>Unidade Escolar</strong> onde o curso será ministrado. A lista segue as unidades SENAI do Portal da Indústria.</p>
+                        </div>
+                        <span class="badge-new">Novo</span>
+                    </div>
+
+                    <div class="update-item">
+                        <div class="update-icon-box">📋</div>
+                        <div class="update-text">
+                            <strong>Modalidade em lista</strong>
+                            <p>O campo Modalidade passou a ser uma lista: Doutorado, Mestrado, Pós Graduação, Graduação, Habilitação técnica, Aprendizagem, Qualificação, Aperfeiçoamento e Cursos Livres. Para algumas modalidades, a coluna SAEP não aparece na planilha.</p>
+                        </div>
+                        <span class="badge-new">Novo</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="guide-welcome-checkbox">
+                <label class="checkbox-container">
+                    <input type="checkbox" id="dontShowAgain">
+                    <span class="checkmark"></span>
+                    Não mostrar este guia novamente.
+                </label>
+            </div>
+
+            <!-- Botões de ação do modal de boas-vindas -->
+            <div class="guide-welcome-actions">
+                <!-- Botão para pular o tutorial completamente -->
+                <button class="guide-btn guide-btn-secondary">Pular Tutorial</button>
+                <button class="guide-btn guide-btn-primary">Começar Guia</button>
+            </div>
+        </div>
+
+        <!-- Tooltip/balão que aparece próximo aos campos durante o guia -->
+        <div id="guideTooltip" class="guide-tooltip hidden">
+
+            <!-- Barra de progresso do guia -->
+            <div class="guide-progress">
+                <!-- Texto indicando passo atual -->
+                <span id="guideProgressText"></span>
+                <!-- Barra visual de progresso -->
+                <div class="guide-progress-bar">
+                    <!-- Preenchimento da barra (largura controlada via JavaScript) -->
+                    <div id="guideProgressFill" class="guide-progress-fill" style="width: 11.11%"></div>
+                </div>
+            </div>
+
+            <!-- Cabeçalho do tooltip com número e título -->
+            <div class="guide-header">
+                <!-- Círculo com número do passo atual -->
+                <div id="guideStepNumber" class="guide-step-number">1</div>
+                <!-- Título do campo sendo explicado -->
+                <h3 id="guideTitle" class="guide-title">Título do Campo</h3>
+            </div>
+
+            <!-- Descrição explicativa do campo (conteúdo dinâmico) -->
+            <p id="guideDescription" class="guide-description">Descrição do campo</p>
+
+            <div class="guide-actions">
+                <button class="guide-btn guide-btn-secondary" type="button">Pular</button>
+                <button id="guideNextBtn" class="guide-btn guide-btn-primary" type="button">Próximo</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="helpCard" class="help-card hidden">
+        <div class="help-card-content">
+            <div class="help-card-header">
+                <h3>🎯 Central de Ajuda</h3>
+                <button class="help-close-btn">✕</button>
+            </div>
+            <div class="help-card-body">
+                <p>Escolha como você vai aprender a usar o sistema</p>
+
+                <div class="help-options">
+                    <div id="startGuideOption" class="help-option">
+                        <div class="help-option-icon">🚀</div>
+                        <div class="help-option-content">
+                            <h4>Guia Interativo</h4>
+                            <p>Tutorial passo a passo que te guia pelo formulário explicando cada campo</p>
+                        </div>
+                    </div>
+
+                    <div id="showVideoOption" class="help-option">
+                        <div class="help-option-icon">🎥</div>
+                        <div class="help-option-content">
+                            <h4>Vídeo Tutorial</h4>
+                            <p>Assista a um vídeo completo mostrando como usar todas as funcionalidades</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="videoModal" class="video-modal hidden">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3>📹 Tutorial em Vídeo</h3>
+                <button id="closeVideoBtn" class="video-close-btn">✕</button>
+            </div>
+            <div id="videoContainer" class="video-container">
+                <div class="video-placeholder">
+                    <div class="video-icon">🎬</div>
+                    <h4>Tutorial: Como Usar o Plano Generator</h4>
+                    <p>Este vídeo mostra passo a passo como preencher o formulário e gerar seu planejamento docente.</p>
+                    <div class="video-info">
+                        <span>⏱️ Duração: 3:19 minutos</span>
+                    </div>
+                    <button id="playVideoBtn" class="video-play-btn">
+                        ▶️ Reproduzir Tutorial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="form-container">
+            <div class="progress-indicator">
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+
+            <div class="form-header">
+                <h2 class="form-title">Dados do Curso</h2>
+                <p class="form-description">Preencha as informações necessárias para gerar o seu planejamento</p>
+            </div>
+
+            <form id="courseForm">
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">📋</div>
+                        Informações Básicas
+                    </div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="estadoUnidade" title="Selecione o estado onde fica a unidade SENAI">Estado <span class="required">*</span></label>
+                            <select id="estadoUnidade" required aria-describedby="tip-estado">
+                                <option value="" disabled selected>Selecione o estado</option>
+                            </select>
+                            <span id="tip-estado" class="sr-only">Primeiro passo: escolha o estado (UF) em que a unidade SENAI está localizada.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipioUnidade" title="Selecione o município após escolher o estado">Município <span class="required">*</span></label>
+                            <select id="municipioUnidade" required disabled aria-describedby="tip-municipio">
+                                <option value="" disabled selected>Selecione primeiro o estado</option>
+                            </select>
+                            <span id="tip-municipio" class="sr-only">Segundo passo: após selecionar o estado, escolha o município da unidade.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="unidadeEscolar" title="Selecione a unidade SENAI onde o curso será ministrado">Unidade Escolar (SENAI) <span class="required">*</span></label>
+                        <select id="unidadeEscolar" name="unidadeEscolar" required disabled aria-describedby="tip-unidade">
+                            <option value="" disabled selected>Selecione primeiro o município</option>
+                        </select>
+                        <span id="tip-unidade" class="sr-only">Terceiro passo: escolha a unidade escolar na lista. Se não encontrar, use a opção &quot;Outra (informar em observações)&quot;.</span>
+                        <p style="font-size: 0.8em; color: #666;">Unidade onde o curso será ministrado. Lista baseada no
+                            <a href="https://www.portaldaindustria.com.br/senai/canais/transparencia/unidades-nos-estados/"
+                                target="_blank" rel="noopener">Portal da Indústria SENAI</a>.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="courseName">Nome do Curso <span class="required">*</span></label>
+                        <input type="text" id="courseName" name="courseName" required
+                            placeholder="Ex: Técnico em Informática">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ucName">Nome da Unidade Curricular (UC) <span class="required">*</span></label>
+                        <input type="text" id="ucName" name="ucName" required placeholder="Ex: Desenvolvimento Web">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="instructorName">Nome do Instrutor <span class="required">*</span></label>
+                        <input type="text" id="instructorName" name="instructorName" required
+                            placeholder="Nome completo do instrutor">
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="classCode">Código da Turma:
+                                <!--<span class="field-info" style="font-size: 0.8em; color: #666;">Opcional</span>--></label>
+                            <input type="text" id="classCode" name="classCode" placeholder="Ex: TEC.2024.2.247">
+                        </div>
+                        <div class="form-group">
+                            <label for="modality">Modalidade <span class="required">*</span></label>
+                            <select id="modality" name="modality" required>
+                                <option value="" disabled selected>Selecione a modalidade</option>
+                                <option value="Doutorado">Doutorado</option>
+                                <option value="Mestrado">Mestrado</option>
+                                <option value="Pós Graduação">Pós Graduação</option>
+                                <option value="Graduação">Graduação</option>
+                                <option value="Habilitação técnica">Habilitação técnica</option>
+                                <option value="Aprendizagem">Aprendizagem</option>
+                                <option value="Qualificação">Qualificação</option>
+                                <option value="Aperfeiçoamento">Aperfeiçoamento</option>
+                                <option value="Cursos Livres">Cursos Livres</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">📅</div>
+                        Cronograma
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="startDate">Data de Início <span class="required">*</span></label>
+                            <input type="date" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">Data de Término <span class="required">*</span></label>
+                            <input type="date" id="endDate" name="endDate" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="totalHours">Carga Horária Total <span class="required">*</span></label>
+                            <input type="text" id="totalHours" name="totalHours" required placeholder="Ex: 80 horas">
+                        </div>
+                        <div class="form-group">
+                            <label for="shift">Carga Horária Diária <span class="required">*</span></label>
+                            <select id="shift" name="shift" required>
+                                <option value="" disabled selected>Selecione a carga horária</option>
+                                <option value="1">1h Aula</option>
+                                <option value="2">2h Aula</option>
+                                <option value="3">3h Aula</option>
+                                <option value="4">4h Aula</option>
+                                <option value="8">8h Aula</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="section-title">
+                        ⏳ Definição dos Dias de Aula</div>
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="weekdays">Dias da Semana (se aplicável):</label>
+                            <div class="weekdays-selector" id="weekdays">
+                                <input type="checkbox" id="mon" name="weekdays" value="1"><label for="mon">Seg</label>
+                                <input type="checkbox" id="tue" name="weekdays" value="2"><label for="tue">Ter</label>
+                                <input type="checkbox" id="wed" name="weekdays" value="3"><label for="wed">Qua</label>
+                                <input type="checkbox" id="thu" name="weekdays" value="4"><label for="thu">Qui</label>
+                                <input type="checkbox" id="fri" name="weekdays" value="5"><label for="fri">Sex</label>
+                            </div>
+                            <p style="font-size: 0.8em; color: #666;">* Se nenhum dia for selecionado, o sistema
+                                considerará todos os dias úteis (Seg-Sex).</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="classDates">Datas específicas (se aplicável):</label>
+                            <input type="text" id="classDates" name="classDates"
+                                placeholder="Selecione todas as datas em que haverá aula...">
+
+                            <p style="font-size: 0.8em; color: #666;">* Use o calendário para
+                                selecionar datas específicas e não sequenciais:</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="holidays">Feriados (clique para selecionar no calendário):</label>
+                        <input type="text" id="holidays" name="holidays" placeholder="Selecione um ou mais dias...">
+                    </div>
+                    <div>
+                        <label>Período de Férias, se houver (Opcional):</label>
+                        <div class="form-group-row">
+                            <div>
+                                <label for="vacationStart">Início:</label>
+                                <input type="date" id="vacationStart" name="vacationStart">
+                            </div>
+                            <div>
+                                <label for="vacationEnd">Fim:</label>
+                                <input type="date" id="vacationEnd" name="vacationEnd">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-title">
+                        <div class="section-icon">📄</div>
+                        Documentação
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="pdfFile">Arquivo PDF da Unidade Curricular <span
+                                    class="required">*</span></label>
+                            <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="matrixFile">Anexar Matriz de Referência:</label>
+                            <input type="file" id="matrixFile" name="matrixFile"
+                                accept=".xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações e Instruções Especiais para a IA (Opcional):</label>
+                        <textarea id="observacoes" name="observacoes" rows="5"
+                            placeholder="Ex: Para esta UC, considere os conhecimentos da UC 'Lógica de Programação' como base. A avaliação final deve ser um projeto prático em grupo..."></textarea>
+                        <p style="font-size: 0.8em; color: #666;">* Use este campo para guiar a IA em casos especiais de
+                            conteúdo, metodologia ou avaliação.</p>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" id="submitBtn">🚀 Gerar Plano de Curso</button>
+                </div>
+            </form>
+
+            <div id="resultArea" class="hidden"></div>
+        </div>
+
+        <div class="footer-info">
+            <p>💡 <strong>Dica:</strong> Certifique-se de que o PDF da UC contém todas as informações necessárias para
+                um plano completo.</p>
+        </div>
+    </div>
+    <script src="assets/data/unidades-senai.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/ui-interactions.js"></script>
+    <script src="assets/js/calendar-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+</body>
+
+</html>

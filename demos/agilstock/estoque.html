@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgilStock — Estoque</title>
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="demo-note">
+        <i class="fas fa-circle-info"></i> Versão de demonstração (somente front-end, com dados de exemplo).
+    </div>
+
+    <aside class="sidebar">
+        <a class="brand" href="dashboard.html"><img src="img/logo-laranja.png" alt="AgilStock"></a>
+        <a class="opmenu" href="dashboard.html"><i class="fas fa-chart-pie"></i><span class="txt">PAINEL GERAL</span></a>
+        <a class="opmenu active" href="estoque.html"><i class="fas fa-boxes-stacked"></i><span class="txt">ESTOQUE</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-truck-field"></i><span class="txt">FORNECEDOR</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-user-plus"></i><span class="txt">NOVOS USUÁRIOS</span></a>
+        <a class="opmenu" href="#"><i class="fas fa-dolly"></i><span class="txt">REGISTRO DE SAÍDA</span></a>
+        <a class="opmenu" href="index.html"><i class="fas fa-right-from-bracket"></i><span class="txt">SAIR</span></a>
+    </aside>
+
+    <main class="content">
+        <div class="topbar">
+            <h1>Estoque</h1>
+            <span class="user"><i class="fas fa-user-circle"></i> admin · AgilStock</span>
+        </div>
+
+        <div class="page">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span><i class="fas fa-boxes-stacked"></i> Produtos em estoque</span>
+                    <div class="input-group" style="max-width:280px">
+                        <input type="text" id="busca" class="form-control form-control-sm" placeholder="Buscar produto...">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-magnifying-glass"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th><th>Categoria</th><th>Fornecedor</th>
+                                    <th class="text-right">Qtd.</th><th class="text-right">Preço unit.</th><th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="estoqueBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const produtos = [
+            ['Garrafa PET 650ml', 'Produtos acabados', 'Embalagens TO', 340, 'R$ 1,20', 'ok'],
+            ['Resina PET', 'Matéria-prima', 'PoliBrasil', 120, 'R$ 8,50', 'ok'],
+            ['Rótulo Adesivo', 'Insumos', 'GráficaCentro', 500, 'R$ 0,35', 'ok'],
+            ['Caixa Papelão 40x30', 'Embalagens', 'Embalagens TO', 18, 'R$ 2,10', 'low'],
+            ['Tampa Rosqueável', 'Insumos', 'PoliBrasil', 800, 'R$ 0,18', 'ok'],
+            ['Polpa de Buriti (kg)', 'Matéria-prima', 'Cerrado Frutas', 0, 'R$ 14,00', 'out'],
+            ['Polpa de Mangaba (kg)', 'Matéria-prima', 'Cerrado Frutas', 6, 'R$ 15,50', 'low'],
+            ['Filme Plástico', 'Embalagens', 'PoliBrasil', 210, 'R$ 3,40', 'ok'],
+            ['Açúcar Cristal (kg)', 'Insumos', 'Distrib. Palmas', 90, 'R$ 4,20', 'ok'],
+            ['Conservante Natural', 'Insumos', 'BioQuímica', 3, 'R$ 22,00', 'out']
+        ];
+        const badge = { ok: '<span class="badge-status st-ok">Em estoque</span>',
+                        low: '<span class="badge-status st-low">Estoque baixo</span>',
+                        out: '<span class="badge-status st-out">Em falta</span>' };
+        const body = document.getElementById('estoqueBody');
+        function render(lista) {
+            body.innerHTML = lista.map(p =>
+                `<tr><td>${p[0]}</td><td>${p[1]}</td><td>${p[2]}</td><td class="text-right">${p[3]}</td><td class="text-right">${p[4]}</td><td>${badge[p[5]]}</td></tr>`).join('')
+                || '<tr><td colspan="6" class="text-center text-muted py-3">Nenhum produto encontrado.</td></tr>';
+        }
+        document.getElementById('busca').addEventListener('input', function () {
+            const t = this.value.toLowerCase();
+            render(produtos.filter(p => (p[0] + ' ' + p[1] + ' ' + p[2]).toLowerCase().includes(t)));
+        });
+        render(produtos);
+    </script>
+</body>
+
+</html>
