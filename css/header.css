@@ -1,0 +1,68 @@
+/* ============================================================
+   Cabeçalho: navbar e menu de navegação
+   ============================================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .navbar .mobile-logo {
+        display: none;
+    }
+
+    .navbar .logo {
+        width: 4.729375rem;
+        cursor: pointer;
+    }
+
+.nav-links {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+    .nav-links li {
+        list-style: none;
+    }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .nav-links li a:hover {
+                color: #808080;
+            }
+
+    .nav-links .btn {
+        text-decoration: none;
+        background-color: #fff;
+        color: black;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 20px;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+        .nav-links .btn:hover {
+            background-color: #808080;
+            color: #fff;
+        }
+
+.back-to-top:hover {
+    color: #808080;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}

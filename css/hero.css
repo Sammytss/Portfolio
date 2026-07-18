@@ -1,0 +1,117 @@
+/* ============================================================
+   Seção hero: apresentação, imagem e redes de contato
+   ============================================================ */
+
+.hero {
+    margin-top: 2.125rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(30%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.bg-img img {
+    width: 60%;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    animation: slideInRight 3s ease-out forwards;
+}
+
+
+
+.hero-top .content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.info h1 {
+    margin-bottom: 1.375rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.info h2 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.info h6 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #909090;
+}
+
+@keyframes slideInRightPerson {
+    0% {
+        transform: translateX(20%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.person-img {
+    animation: slideInRightPerson 1.5s ease-out forwards;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .person-img img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.7s ease-in-out;
+        object-fit: cover;
+    }
+
+        .person-img img:hover {
+            transform: scale(1.02);
+        }
+
+
+.contact-me {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+    .contact-me a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .contact-me i {
+        background-color: #C4C4C4;
+        padding: 0.625rem .75rem;
+        border-radius: 5px;
+        transition-duration: 0.5s;
+    }
+
+        .contact-me i:hover {
+            background-color: #808080;
+            color: #fff;
+        }

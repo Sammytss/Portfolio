@@ -42,7 +42,7 @@
                         <h6> Desenvolvedor Full-Stack </h6>
                     </div>
                     <div class="contact-me">
-                        <a href="https://api.whatsapp.com/" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <!--<a href="https://api.whatsapp.com/" target="_blank" aria-disabled="true">--><i class="fa-brands fa-whatsapp"></i><!--</a>-->
                         <a href="https://linkedin.com/in/samuel-teles-dos-santos-662003237/"><i class="fa-brands fa-linkedin" target="_blank"></i></a>
                         <a href="https://github.com/Sammytss" target="_blank"><i class="fa-brands fa-github"></i></a>
                     </div>
@@ -67,8 +67,8 @@
             <div class="header-info">
                 <h4>SOBRE MIM</h4>
                 <p>
-                    Sou graduado em Análise e Desenvolvimento de Sistemas pela Universidade Norte do Paraná e possuo 7 anos de experiência,
-                    sendo 3 anos dedicados ao desenvolvimento. Grande parte da minha experiência foi adquirida durante o período
+                    Sou graduado em Análise e Desenvolvimento de Sistemas pela Universidade Norte do Paraná e possuo 9 anos de experiência,
+                    sendo 5 anos dedicados ao desenvolvimento de sistemas. Grande parte da minha experiência foi adquirida durante o período
                     em que atuei no Exército, onde participei do desenvolvimento de aplicações mobile e web.
                 </p>
                 <h6>EXPLORE</h6>
@@ -222,13 +222,13 @@
 
             <!-- Modal estilo Lightbox com múltiplas imagens -->
             <div id="lightboxModal" class="lightbox" style="display:none;" aria-hidden="true">
-                <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar">×</button>
+                <button class="lightbox-close" aria-label="Fechar">×</button>
                 <div class="lightbox-content">
                     <h5 id="lightboxTitle" class="lightbox-title"></h5>
                     <div class="lightbox-stage">
-                        <button class="lightbox-nav prev" onclick="changeSlide(-1)" aria-label="Anterior">❮</button>
+                        <button class="lightbox-nav prev" aria-label="Anterior">❮</button>
                         <img id="lightboxImage" src="" alt="" />
-                        <button class="lightbox-nav next" onclick="changeSlide(1)" aria-label="Próxima">❯</button>
+                        <button class="lightbox-nav next" aria-label="Próxima">❯</button>
                     </div>
                     <div id="lightboxCounter" class="lightbox-counter"></div>
                     <div id="thumbnailsContainer" class="lightbox-thumbs"></div>
@@ -247,7 +247,7 @@
                         <a id="demoOpen" class="demo-ext" href="#" target="_blank" rel="noopener" title="Abrir em nova aba">
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
-                        <button class="demo-close" onclick="closeDemo()" aria-label="Fechar">×</button>
+                        <button class="demo-close" aria-label="Fechar">×</button>
                     </span>
                 </div>
                 <div class="demo-frame-wrap">
@@ -292,304 +292,16 @@
                 </a>
             </div>
             <div class="social">
-                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                <!--<a href="https://www.facebook.com/" target="_blank">--><i class="fab fa-facebook-square"></i><!--</a>-->
                 <a href="https://github.com/Sammytss" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <!--<a href="https://www.instagram.com/" target="_blank">--><i class="fab fa-instagram"></i><!--</a>-->
                 <a href="https://linkedin.com/in/samuel-teles-dos-santos-662003237/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
             <p>&copy;  2026 SammyTs.Todos os direitos reservados.</p>
         </div>
 
     </footer>
-    <script>
-        /* =========================================================
-           PROJETOS — fonte única de dados.
-           Para adicionar um projeto novo, basta inserir um objeto
-           aqui. Campos:
-             tags  -> usados pelos filtros (web | mobile | ia | design)
-             thumb -> imagem do card
-             fit   -> "cover" (padrão) ou "contain" (p/ ícones)
-             gallery -> imagens do lightbox
-             demo  -> link "ao vivo" (opcional)
-             repo  -> link do código (opcional)
-        ========================================================= */
-        const projects = [
-            {
-                title: "Plano Generator",
-                category: "Web App · IA Generativa",
-                tags: ["web", "ia"],
-                thumb: "./images/projetos/PlanoGenerator/Home.png",
-                desc: "Aplicação web que automatiza a criação de Planos de Ensino Docente (Metodologia SENAI) usando a IA Generativa do Google (Gemini) e o Google Workspace — gerando planilhas completas e formatadas em minutos.",
-                stack: ["JavaScript", "Node.js", "Gemini AI", "Apps Script"],
-                gallery: ["./images/projetos/PlanoGenerator/Home.png"],
-                demoUrl: "./demos/plano-generator/index.html",
-                repo: "https://github.com/Sammytss"
-            },
-            {
-                title: "SARA",
-                category: "App Mobile · Ambiental",
-                tags: ["mobile", "ia"],
-                thumb: "./images/projetos/SARA/icon.png",
-                fit: "contain",
-                desc: "Sistema de Acompanhamento da Restauração Ambiental — app Flutter para monitorar a recuperação de áreas degradadas no Tocantins, integrando técnicos de campo, produtores e gestores do NATURATINS num fluxo offline-first. Back-end em Python/FastAPI.",
-                stack: ["Flutter", "Dart", "Python", "FastAPI"],
-                gallery: ["./images/projetos/SARA/icon.png"],
-                repo: "https://github.com/Sammytss"
-            },
-            {
-                title: "Cerradô",
-                category: "Landing Page · Branding",
-                tags: ["design", "web"],
-                thumb: "./images/projetos/Cerrado/Home.png",
-                desc: "\"O sabor que regenera\" — landing page para uma marca de bebidas lácteas artesanais com sabores do Cerrado (Buriti, Mangaba e Cupuaçu). Front-end estático com storytelling visual, animações e forte identidade.",
-                stack: ["HTML5", "CSS3", "JavaScript"],
-                gallery: [
-                    "./images/projetos/Cerrado/Home.png",
-                    "./images/projetos/Cerrado/PaginaCompleta.png",
-                    "./images/projetos/Cerrado/Buriti.png",
-                    "./images/projetos/Cerrado/Mangaba.png",
-                    "./images/projetos/Cerrado/Cupuacu.png"
-                ],
-                demoUrl: "https://cerradoosabor.vercel.app/",
-                demo: "https://cerradoosabor.vercel.app/",
-                repo: "https://github.com/Sammytss"
-            },
-            {
-                title: "AgilStock",
-                category: "Sistema Web · Gestão de Estoque",
-                tags: ["web"],
-                thumb: "./images/projetos/AgilStock/Dashboard.png",
-                desc: "Sistema de gestão de estoque e produção: cadastro de produtos, matéria-prima, fornecedores e categorias, controle de saídas e dashboard com indicadores em tempo real.",
-                stack: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
-                gallery: [
-                    "./images/projetos/AgilStock/Dashboard.png",
-                    "./images/projetos/AgilStock/AgilStock.png",
-                    "./images/projetos/AgilStock/Estoque.png",
-                    "./images/projetos/AgilStock/MateriaPrima.png",
-                    "./images/projetos/AgilStock/Fornecedores.png",
-                    "./images/projetos/AgilStock/Saidas.png",
-                    "./images/projetos/AgilStock/NovosUsuarios.png",
-                    "./images/projetos/AgilStock/CadastrarProduto.png",
-                    "./images/projetos/AgilStock/CadastrarMateriaPrime.png",
-                    "./images/projetos/AgilStock/CadastrarCategoria.png",
-                    "./images/projetos/AgilStock/CadastrarFornecedores.png"
-                ],
-                demoUrl: "./demos/agilstock/index.html",
-                repo: "https://github.com/Sammytss"
-            },
-            {
-                title: "SenaiSound",
-                category: "Sistema Web · Gestão de Artistas",
-                tags: ["web"],
-                thumb: "./images/projetos/SenaiSound/MostrarArtistas.png",
-                desc: "Projeto desenvolvido em aula, aplicando POO com alunos da turma de Técnico em desenvolvimento de sistemas. Aplicação de gestão de artistas e músicas construída em Blazor/.NET, com API em C# e persistência em SQL Server. CRUD completo e interface administrativa.",
-                stack: ["C#", ".NET", "Blazor", "SQL Server"],
-                gallery: [
-                    "./images/projetos/SenaiSound/MostrarArtistas.png",
-                    "./images/projetos/SenaiSound/CadastrarArtista.png",
-                    "./images/projetos/SenaiSound/EditarArtista.png",
-                    "./images/projetos/SenaiSound/Home.png"
-                ],
-                demoUrl: "https://portfolio-eight-omega-u6atxdg71n.vercel.app/demos/senaisound/",
-                repo: "https://github.com/Sammytss"
-            },
-            {
-                title: "Banco de Talentos 22º BI",
-                category: "Sistema Web · Recolocação",
-                tags: ["web"],
-                thumb: "./images/projetos/ListarTalentos.png",
-                desc: "Plataforma para cadastro de militares temporários da OM, visando a reinserção no mercado de trabalho — permite que empresas parceiras encontrem ex-militares ou militares em fim de serviço.",
-                stack: ["PHP", "MySQL", "Bootstrap"],
-                gallery: [
-                    "./images/projetos/ListarTalentos.png",
-                    "./images/projetos/Login.png",
-                    "./images/projetos/DetelhesDoTalento.png",
-                    "./images/projetos/CadastrarTalento.png",
-                    "./images/projetos/EditarTalento.png",
-                    "./images/projetos/ADM.png"
-                ],
-                demoUrl: "./demos/banco-de-talentos/index.html",
-                repo: "https://github.com/Sammytss"
-            }
-        ];
-
-        /* ---------- Renderização dos cards ---------- */
-        const grid = document.getElementById('projectsGrid');
-
-        function iconLink(href, svg, label) {
-            return `<a class="card-link" href="${href}" target="_blank" rel="noopener" aria-label="${label}" onclick="event.stopPropagation()">${svg}${label}</a>`;
-        }
-        const svgCode = '<i class="fa-brands fa-github"></i>';
-        const svgPlay = '<i class="fa-solid fa-circle-play"></i>';
-
-        function renderProjects() {
-            grid.innerHTML = projects.map((p, i) => {
-                const demoBtn = p.demoUrl
-                    ? `<button class="card-link is-primary" onclick="event.stopPropagation(); openDemo(${i})">${svgPlay} Ver demo</button>`
-                    : '';
-                const links = demoBtn + (p.repo ? iconLink(p.repo, svgCode, 'Código') : '');
-                return `
-                <article class="project-card" data-index="${i}" data-tags="${p.tags.join(' ')}" tabindex="0" role="button" aria-label="Abrir galeria de ${p.title}">
-                    <div class="card-thumb">
-                        <img src="${p.thumb}" alt="Prévia de ${p.title}" loading="lazy" class="fit-${p.fit || 'cover'}">
-                        <span class="card-thumb-hint"><i class="fa-solid fa-magnifying-glass-plus"></i> Ver galeria</span>
-                    </div>
-                    <div class="card-body">
-                        <span class="card-category">${p.category}</span>
-                        <h5 class="card-title">${p.title}</h5>
-                        <p class="card-desc">${p.desc}</p>
-                        <div class="card-stack">${p.stack.map(s => `<span class="tech-pill">${s}</span>`).join('')}</div>
-                    </div>
-                    <div class="card-footer">${links}</div>
-                </article>`;
-            }).join('');
-
-            document.querySelectorAll('.project-card').forEach(card => {
-                const idx = Number(card.dataset.index);
-                card.addEventListener('click', () => openLightbox(idx));
-                card.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(idx); }
-                });
-            });
-        }
-
-        /* ---------- Filtros ---------- */
-        const filterBar = document.getElementById('projectFilters');
-        filterBar.addEventListener('click', (e) => {
-            const btn = e.target.closest('.filter-btn');
-            if (!btn) return;
-            filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('is-active'));
-            btn.classList.add('is-active');
-            const filter = btn.dataset.filter;
-            document.querySelectorAll('.project-card').forEach(card => {
-                const show = filter === 'all' || card.dataset.tags.split(' ').includes(filter);
-                card.classList.toggle('is-hidden', !show);
-            });
-        });
-
-        /* ---------- Lightbox ---------- */
-        const lightboxModal = document.getElementById('lightboxModal');
-        const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxTitle = document.getElementById('lightboxTitle');
-        const lightboxCounter = document.getElementById('lightboxCounter');
-        const thumbnailsContainer = document.getElementById('thumbnailsContainer');
-
-        let currentGallery = [];
-        let currentIndex = 0;
-
-        function openLightbox(index) {
-            const p = projects[index];
-            currentGallery = p.gallery && p.gallery.length ? p.gallery : [p.thumb];
-            currentIndex = 0;
-            lightboxTitle.textContent = p.title;
-            renderThumbnails();
-            showSlide(0);
-            lightboxModal.style.display = 'flex';
-            lightboxModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightboxModal.style.display = 'none';
-            lightboxModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        function changeSlide(n) { showSlide(currentIndex + n); }
-
-        function showSlide(index) {
-            if (index >= currentGallery.length) currentIndex = 0;
-            else if (index < 0) currentIndex = currentGallery.length - 1;
-            else currentIndex = index;
-
-            lightboxImage.src = currentGallery[currentIndex];
-            lightboxCounter.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
-
-            thumbnailsContainer.querySelectorAll('img').forEach((thumb, i) => {
-                thumb.classList.toggle('is-active', i === currentIndex);
-            });
-        }
-
-        function renderThumbnails() {
-            thumbnailsContainer.innerHTML = '';
-            const single = currentGallery.length <= 1;
-            thumbnailsContainer.style.display = single ? 'none' : 'flex';
-            if (single) return;
-            currentGallery.forEach((src, i) => {
-                const thumb = document.createElement('img');
-                thumb.src = src;
-                if (i === currentIndex) thumb.classList.add('is-active');
-                thumb.addEventListener('click', () => showSlide(i));
-                thumbnailsContainer.appendChild(thumb);
-            });
-        }
-
-        // Fechar clicando fora / navegar por teclado
-        lightboxModal.addEventListener('click', (e) => {
-            if (e.target === lightboxModal) closeLightbox();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (lightboxModal.style.display !== 'flex') return;
-            if (e.key === 'Escape') closeLightbox();
-            else if (e.key === 'ArrowRight') changeSlide(1);
-            else if (e.key === 'ArrowLeft') changeSlide(-1);
-        });
-
-        /* ---------- Demo ao vivo (iframe) ---------- */
-        const demoModal = document.getElementById('demoModal');
-        const demoFrame = document.getElementById('demoFrame');
-        const demoTitle = document.getElementById('demoTitle');
-        const demoOpen = document.getElementById('demoOpen');
-        const demoLoader = document.getElementById('demoLoader');
-
-        function openDemo(index) {
-            const p = projects[index];
-            if (!p.demoUrl) return;
-            demoTitle.textContent = p.title;
-            demoOpen.href = p.demo || p.demoUrl;
-            demoLoader.style.display = 'flex';
-            demoFrame.src = p.demoUrl;
-            demoFrame.onload = () => { demoLoader.style.display = 'none'; };
-            demoModal.style.display = 'flex';
-            demoModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeDemo() {
-            demoModal.style.display = 'none';
-            demoModal.setAttribute('aria-hidden', 'true');
-            demoFrame.src = 'about:blank';
-            document.body.style.overflow = '';
-        }
-
-        demoModal.addEventListener('click', (e) => {
-            if (e.target === demoModal) closeDemo();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (demoModal.style.display === 'flex' && e.key === 'Escape') closeDemo();
-        });
-
-        renderProjects();
-    </script>
-    <script>
-        let navbar = document.querySelector(".nav-links")
-        let humbergur = document.querySelector(".humburger")
-        let icons = document.querySelectorAll("i")
-
-        humbergur.addEventListener('click', function (event) {
-            let isvible = navbar.getAttribute('data-visible');
-            if (isvible == 'true') {
-                navbar.setAttribute('data-visible', 'false');
-                icons[0].setAttribute('data-visible', 'true');
-                icons[1].setAttribute('data-visible', 'false')
-            }
-            else {
-                navbar.setAttribute('data-visible', 'true');
-                icons[0].setAttribute('data-visible', 'false');
-                icons[1].setAttribute('data-visible', 'true')
-            }
-        })
-    </script>
+        <script type="module" src="js/main.js"></script>
 
 </body>
 </html>
